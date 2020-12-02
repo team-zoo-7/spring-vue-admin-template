@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true" scan="true" scanPeriod="5 seconds">
+    <springProperty scope="context" name="application_name" source="spring.application.name"
+                    defaultValue="spring-restful-api"/>
+    <contextName>${application_name}</contextName>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <timestamp key="bySecond" datePattern="yyyy-MM-dd_HH-mm-ss"/>
+
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${LOG_PATH}/spring-restful-api.${bySecond}.log</file>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss:SSS} %highlight(%-5level) %clr(${PID:- }) %clr([%15.15t]) %cyan(%-40.40logger{39}):%4L %cyan(%-25.25M) - %msg%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}
+            </pattern>
+        </encoder>
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator>
+                <expression>return formattedMessage.contains("findByMethodAndUrl")
+                    || formattedMessage.contains("# args=")
+                    || formattedMessage.contains("# retVal=")
+                    || formattedMessage.contains("BATCH_")
+                    || formattedMessage.contains("TASK_")
+                    || formattedMessage.contains("select last_insert_id()")
+                    || formattedMessage.contains("Executing prepared SQL")
+                    ;
+                </expression>
+            </evaluator>
+            <onMatch>DENY</onMatch>
+            <onMismatch>ACCEPT</onMismatch>
+        </filter>
+    </appender>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset>UTF-8</charset>
+<!--            <pattern>%d{yyyy-MM-dd HH:mm:ss:SSS} %highlight(%-5level) %clr(${PID:- }) %clr([%15.15t]) %cyan(%-40.40logger{39}):%4L %cyan(%-25.25M) - %msg%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}-->
+            <pattern>%msg%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}
+            </pattern>
+        </encoder>
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator>
+                <expression>return formattedMessage.contains("Executing prepared SQL")
+<!--                    || formattedMessage.contains("findByMethodAndUrl")-->
+                    || formattedMessage.contains("    args=")
+                    || formattedMessage.contains("    retVal=")
+                    || formattedMessage.contains("BATCH_")
+                    || formattedMessage.contains("TASK_")
+                    || formattedMessage.contains("select last_insert_id()")
+                    ;
+                </expression>
+            </evaluator>
+            <onMatch>DENY</onMatch>
+            <onMismatch>ACCEPT</onMismatch>
+        </filter>
+    </appender>
+
+    <springProfile name="dev">
+        <logger name="jdbc" level="off" additivity="false">
+            <appender-ref ref="STDOUT"/>
+        </logger>
+
+        <logger name="jdbc.connection" level="off" additivity="false">
+            <appender-ref ref="STDOUT"/>
+        </logger>
+
+        <logger name="jdbc.sqlonly" level="debug" additivity="false">
+            <appender-ref ref="STDOUT"/>
+        </logger>
+
+        <logger name="jdbc.resultsettable" level="info" additivity="false">
+            <appender-ref ref="STDOUT"/>
+        </logger>
+
+        <logger name="com.ifsaid.shark" level="info" additivity="false">
+            <appender-ref ref="STDOUT"/>
+        </logger>
+
+        <logger name="org.springframework.security" level="error" additivity="false">
+            <appender-ref ref="STDOUT"/>
+        </logger>
+
+        <logger name="com.ifsaid.shark.common.aop.AdviceLogging" level="info" additivity="false">
+            <appender-ref ref="STDOUT"/>
+        </logger>
+
+        <logger name="com.ifsaid.shark.common.aop.CentralLoggingHandler" level="error" additivity="false">
+            <appender-ref ref="STDOUT"/>
+        </logger>
+
+        <logger name="org.mybatis.spring.SqlSessionUtils" level="error" additivity="false">
+            <appender-ref ref="STDOUT"/>
+        </logger>
+
+        <logger name="org.mybatis.spring.transaction.SpringManagedTransaction" level="error" additivity="false">
+            <appender-ref ref="STDOUT"/>
+        </logger>
+
+        <logger name="com.zaxxer.hikari" level="error" additivity="false">
+            <appender-ref ref="STDOUT"/>
+        </logger>
+
+        <root level="error">
+            <appender-ref ref="STDOUT"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="stg">
+        <logger name="jdbc.sqlonly" level="error" additivity="false">
+            <appender-ref ref="STDOUT"/>
+        </logger>
+
+        <logger name="jdbc.resultsettable" level="error" additivity="false">
+            <appender-ref ref="STDOUT"/>
+        </logger>
+
+        <logger name="com.ifsaid.shark" level="error" additivity="false">
+            <appender-ref ref="STDOUT"/>
+        </logger>
+
+        <root level="error">
+            <appender-ref ref="STDOUT"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="prd">
+        <logger name="jdbc.sqlonly" level="error" additivity="false">
+            <appender-ref ref="FILE"/>
+        </logger>
+
+        <logger name="jdbc.resultsettable" level="error" additivity="false">
+            <appender-ref ref="FILE"/>
+        </logger>
+
+        <logger name="com.ifsaid.shark" level="error" additivity="false">
+            <appender-ref ref="FILE"/>
+        </logger>
+
+        <root level="error">
+            <appender-ref ref="FILE"/>
+        </root>
+    </springProfile>
+
+</configuration>

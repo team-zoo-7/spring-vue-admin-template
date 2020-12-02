@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ifsaid.shark.mapper.SysRoleMapper">
+
+    <!--  사용자 ID가 소유 한 역할 열 테이블 쿼리 Set<SysRole> findAllByUserId(String uid);  -->
+    <select id="findAllByUserId" parameterType="java.lang.Integer" resultType="SysRole">
+        SELECT r.rid
+             , r.role_name AS roleName
+             , r.description
+        FROM tb_sys_role AS r
+        LEFT JOIN tb_sys_user_role AS ur
+        ON ur.role_id = r.rid
+        WHERE
+            ur.user_id = #{uid}
+    </select>
+
+    <select id="selectByKeywords" parameterType="java.lang.String" resultType="SysRole">
+        SELECT
+        rid,
+        role_name AS roleName,
+        description,
+        create_time AS createTime,
+        last_update_time AS lastUpdateTime
+        FROM
+        tb_sys_role
+        <if test="keywords != null">
+            WHERE CONCAT(role_name,description) LIKE CONCAT('%',#{keywords},'%')
+        </if>
+    </select>
+
+    <!--  역할 연관, 다중 권한 int insertByPermissions(List<Relation> record); -->
+    <insert id="insertByPermissions">
+        insert into tb_sys_role_permission (role_id, permission_id)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.targetId},#{item.sourceId})
+        </foreach>
+    </insert>
+
+
+    <!-- 특정 역할이 여전히 다른 사용자에 의해 인용되는지 확인 Integer userReference(Integer rid);-->
+    <select id="userReference" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM tb_sys_user_role
+        WHERE role_id = #{rid}
+    </select>
+
+    <!--  삭제 역할이 소유 한 모든 권한 int deleteRoleHavePermissions(Integer rid); -->
+    <delete id="deleteHavePermissions" parameterType="java.lang.Integer">
+        DELETE
+        FROM tb_sys_role_permission
+        WHERE role_id = #{rid}
+    </delete>
+
+</mapper>

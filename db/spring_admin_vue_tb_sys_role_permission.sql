@@ -1,0 +1,63 @@
+CREATE TABLE tb_sys_role_permission (
+    permission_id INT NOT NULL COMMENT '권한ID',
+    role_id       INT NOT NULL COMMENT '역할ID'
+)
+    COMMENT '[ 권한관리 ] 역할권한테이블';
+
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (1, 2);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (3, 2);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (4, 2);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (5, 2);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (6, 2);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (10, 2);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (11, 2);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (12, 2);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (13, 2);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (14, 2);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (15, 2);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (16, 2);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (17, 2);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (18, 2);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (19, 2);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (20, 2);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (21, 2);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (22, 2);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (23, 2);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (2, 3);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (7, 3);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (8, 3);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (9, 3);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (2, 14);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (7, 14);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (27, 14);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (1, 11);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (2, 11);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (22, 11);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (6, 11);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (7, 11);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (8, 11);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (1, 1);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (2, 1);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (3, 1);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (4, 1);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (5, 1);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (6, 1);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (7, 1);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (8, 1);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (9, 1);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (10, 1);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (11, 1);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (12, 1);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (13, 1);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (14, 1);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (15, 1);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (16, 1);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (17, 1);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (18, 1);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (19, 1);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (20, 1);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (21, 1);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (22, 1);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (23, 1);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (27, 1);
+INSERT INTO spring_admin_vue.tb_sys_role_permission (permission_id, role_id) VALUES (42, 1);
