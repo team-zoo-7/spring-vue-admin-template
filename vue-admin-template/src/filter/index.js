@@ -64,7 +64,7 @@ Vue.filter('showGender', function(gender) {
   // 상태 유형 확인
   let result = ''
   if (gender === 0) {
-    result = '년'
+    result = '여'
   } else if (gender === 1) {
     result = '남'
   } else {
