@@ -7,7 +7,7 @@
 - spring-vue-admin-template << spring-admin-vue = spring-boot-security-jwt + vue-admin-template
 - back-end: spring-boot, spring-security, jwt, redis, mysql, mybatis, lombok, rest api, swagger...
 - front-end: vue.js, axios, saas, jest, element-ui, echarts...
-- GitHub: https://github.com/foxliontiger/spring-vue-admin-template
+- GitHub: https://github.com/team-zoo-7/spring-vue-admin-template
 
 
 
